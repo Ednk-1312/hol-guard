@@ -488,7 +488,7 @@
                       "required_flags": [
                         "--allow-below-floor"
                       ],
-                      "required_flags_in_all_arguments": false,
+                      "required_flags_in_all_arguments": true,
                       "required_option_values": [],
                       "subcommands": [
                         "discharge",
@@ -1051,6 +1051,34 @@
       "expected_effective_segments": [],
       "id": "lookalike-path",
       "rule_id": "command.batterycontrol.limit-set"
+    },
+    {
+      "command": "batterycontrol --allow-below-floor discharge start 10",
+      "disabled_permissions": [],
+      "enabled_extensions": [
+        "command.batterycontrol"
+      ],
+      "expected_action": "review",
+      "expected_effective_segments": [
+        0
+      ],
+      "id": "below-floor-flag-first",
+      "rule_id": "command.batterycontrol.discharge-below-floor"
+    },
+    {
+      "command": "batterycontrol --allow-below-floor discharge start 10",
+      "disabled_permissions": [
+        "command.batterycontrol.permission.discharge-below-floor"
+      ],
+      "enabled_extensions": [
+        "command.batterycontrol"
+      ],
+      "expected_action": "block",
+      "expected_effective_segments": [
+        0
+      ],
+      "id": "below-floor-flag-first-disabled",
+      "rule_id": "command.batterycontrol.discharge-below-floor"
     }
   ],
   "schema": "guard.command-extension-fixtures.v1"

@@ -1,5 +1,4 @@
 {
-  "schema": "guard.command-extension-source.v1",
   "extension": {
     "action_classes": [
       "batterycontrol charging policy command",
@@ -261,12 +260,12 @@
             "variant_id": "help"
           }
         ],
-        "severity": "medium",
-        "title": "BatteryControl charge limit change",
         "safer_alternatives": [
           "Run `batterycontrol limit status` to inspect the active policy before changing it.",
           "Confirm the limit and resume values are intentional; the daemon re-applies the policy across reboots and wake."
-        ]
+        ],
+        "severity": "medium",
+        "title": "BatteryControl charge limit change"
       },
       {
         "action_classes": [
@@ -352,12 +351,12 @@
             "variant_id": "help"
           }
         ],
-        "severity": "high",
-        "title": "BatteryControl charge limit removal",
         "safer_alternatives": [
           "Run `batterycontrol limit status` first to see whether a limit is active and verified on hardware.",
           "Removing an active limit lets the battery charge to 100% again; confirm the change is deliberate."
-        ]
+        ],
+        "severity": "high",
+        "title": "BatteryControl charge limit removal"
       },
       {
         "action_classes": [
@@ -447,12 +446,12 @@
             "variant_id": "help"
           }
         ],
-        "severity": "high",
-        "title": "BatteryControl forced discharge start",
         "safer_alternatives": [
           "Run `batterycontrol discharge status` first; a discharge session may already be running.",
           "Keep the default 20% floor; the battery drains for the whole session."
-        ]
+        ],
+        "severity": "high",
+        "title": "BatteryControl forced discharge start"
       },
       {
         "action_classes": [
@@ -484,7 +483,7 @@
                 "required_flags": [
                   "--allow-below-floor"
                 ],
-                "required_flags_in_all_arguments": false,
+                "required_flags_in_all_arguments": true,
                 "required_option_values": [],
                 "subcommands": [
                   "discharge",
@@ -504,12 +503,12 @@
         "rule_id": "command.batterycontrol.discharge-below-floor",
         "rule_version": "1.0.0",
         "safe_variants": [],
-        "severity": "critical",
-        "title": "BatteryControl below-floor forced discharge",
         "safer_alternatives": [
           "Draining below 20% accelerates battery wear; only approve when the battery is deliberately being serviced.",
           "Prefer a target at or above the 20% floor unless the upstream safety-floor switch was consciously removed."
-        ]
+        ],
+        "severity": "critical",
+        "title": "BatteryControl below-floor forced discharge"
       },
       {
         "action_classes": [
@@ -593,12 +592,12 @@
             "variant_id": "help"
           }
         ],
-        "severity": "high",
-        "title": "BatteryControl privileged daemon uninstall",
         "safer_alternatives": [
           "Run `batterycontrol status` first so the removal decision is made against a known daemon state.",
           "Uninstall removes privileged charging control system-wide; confirm no scheduled automation depends on it."
-        ]
+        ],
+        "severity": "high",
+        "title": "BatteryControl privileged daemon uninstall"
       }
     ],
     "safer_alternatives": [
@@ -607,5 +606,6 @@
     ],
     "source": "built-in",
     "version": "1.0.0"
-  }
+  },
+  "schema": "guard.command-extension-source.v1"
 }
